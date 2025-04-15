@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: flask-portfolio
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn wsgi:app"
+    plan: free
+    branch: main
+    envVars:
+    - key: SECRET_KEY
+      value: 4df2e0ac3b7d40ddbd0e2eec2f3f6b13e16ed8e58aa1bdff09dfbf7b1950ffdc
+    - key: CSRF_SECRET_KEY
+      value: 9a9e5a57beef0dbd78b78123b4c2f17485ddf4167f015d08e3f5c54a7d0c99a4
+    - key: FLASK_ENV
+      value: production
+    - key: DATABASE_URL
+      value: sqlite:///portfolio.db
+
