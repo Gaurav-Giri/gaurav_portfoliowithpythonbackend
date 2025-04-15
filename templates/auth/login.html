@@ -1,0 +1,34 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8 max-w-md">
+    <h1 class="text-3xl font-bold mb-8 text-center">Admin Login</h1>
+    
+    <form method="POST" class="space-y-6">
+        {{ form.hidden_tag() }}
+        
+        <div>
+            {{ form.username.label(class="block text-gray-700 dark:text-gray-300 mb-2") }}
+            {{ form.username(class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500") }}
+            {% for error in form.username.errors %}
+            <p class="text-red-500 text-sm mt-1">{{ error }}</p>
+            {% endfor %}
+        </div>
+        
+        <div>
+            {{ form.password.label(class="block text-gray-700 dark:text-gray-300 mb-2") }}
+            {{ form.password(class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500") }}
+            {% for error in form.password.errors %}
+            <p class="text-red-500 text-sm mt-1">{{ error }}</p>
+            {% endfor %}
+        </div>
+        
+        <button type="submit" 
+                class="w-full px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+            Login
+        </button>
+    </form>
+</div>
+{% endblock %}

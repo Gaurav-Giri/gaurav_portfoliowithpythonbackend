@@ -1,0 +1,17 @@
+<!-- templates/partials/header.html -->
+<header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm shadow-sm">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="{{ url_for('home.index') }}" class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">Portfolio</a>
+        <div class="hidden md:flex space-x-8">
+            <a href="{{ url_for('home.index') }}" class="hover:text-indigo-600 dark:hover:text-indigo-400">Home</a>
+            <a href="{{ url_for('home.about') }}" class="hover:text-indigo-600 dark:hover:text-indigo-400">About</a>
+            <a href="{{ url_for('projects.list_projects') }}" class="hover:text-indigo-600 dark:hover:text-indigo-400">Projects</a>
+            <a href="{{ url_for('contact.contact') }}" class="hover:text-indigo-600 dark:hover:text-indigo-400">Contact</a>
+        </div>
+        {% if current_user.is_authenticated %}
+            <a href="{{ url_for('auth.logout') }}" class="hover:text-indigo-600 dark:hover:text-indigo-400">Logout</a>
+        {% else %}
+            <a href="{{ url_for('auth.login') }}" class="hover:text-indigo-600 dark:hover:text-indigo-400">Login</a>
+        {% endif %}
+    </nav>
+</header>

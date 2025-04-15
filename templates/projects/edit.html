@@ -1,0 +1,75 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Edit {{ project.title }}{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8 max-w-2xl">
+    <h1 class="text-3xl font-bold mb-8">Edit Project</h1>
+    
+    <form method="POST" enctype="multipart/form-data" class="space-y-6">
+        {{ form.hidden_tag() }}
+        
+        <div>
+            {{ form.title.label(class="block text-gray-700 dark:text-gray-300 mb-2") }}
+            {{ form.title(class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500") }}
+            {% for error in form.title.errors %}
+            <p class="text-red-500 text-sm mt-1">{{ error }}</p>
+            {% endfor %}
+        </div>
+        
+        <div>
+            {{ form.description.label(class="block text-gray-700 dark:text-gray-300 mb-2") }}
+            {{ form.description(class="w-full px-4 py-2 border rounded-lg h-32 focus:ring-2 focus:ring-indigo-500") }}
+            {% for error in form.description.errors %}
+            <p class="text-red-500 text-sm mt-1">{{ error }}</p>
+            {% endfor %}
+        </div>
+        
+        <div>
+            {{ form.technologies.label(class="block text-gray-700 dark:text-gray-300 mb-2") }}
+            {{ form.technologies(class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500") }}
+            <p class="text-gray-500 text-sm mt-1">Comma separated list</p>
+            {% for error in form.technologies.errors %}
+            <p class="text-red-500 text-sm mt-1">{{ error }}</p>
+            {% endfor %}
+        </div>
+        
+        <div>
+            {{ form.project_link.label(class="block text-gray-700 dark:text-gray-300 mb-2") }}
+            {{ form.project_link(class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500") }}
+            {% for error in form.project_link.errors %}
+            <p class="text-red-500 text-sm mt-1">{{ error }}</p>
+            {% endfor %}
+        </div>
+        
+        <div>
+            <label class="block text-gray-700 dark:text-gray-300 mb-2">Current Image</label>
+            {% if project.image_url %}
+            <img src="{{ url_for('static', filename='uploads/' + project.image_url) }}" 
+                 alt="Current project image" 
+                 class="h-32 w-auto mb-4">
+            {% else %}
+            <p class="text-gray-500">No image uploaded</p>
+            {% endif %}
+            
+            {{ form.image.label(class="block text-gray-700 dark:text-gray-300 mb-2") }}
+            {{ form.image(class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500") }}
+            <p class="text-gray-500 text-sm mt-1">Leave blank to keep current image</p>
+            {% for error in form.image.errors %}
+            <p class="text-red-500 text-sm mt-1">{{ error }}</p>
+            {% endfor %}
+        </div>
+        
+        <div class="flex justify-end gap-4">
+            <a href="{{ url_for('projects.project_detail', project_id=project.id) }}" 
+               class="px-6 py-2 border rounded-lg text-gray-700 hover:bg-gray-100">
+                Cancel
+            </a>
+            <button type="submit" 
+                    class="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+                Update Project
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}

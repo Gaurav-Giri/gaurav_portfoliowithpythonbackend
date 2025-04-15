@@ -1,0 +1,51 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}{{ project.title }}{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <div class="max-w-4xl mx-auto">
+        {% if project.image_url %}
+        <img src="{{ url_for('static', filename='uploads/' + project.image_url) }}" 
+             alt="{{ project.title }}" 
+             class="w-full h-64 md:h-96 object-cover rounded-lg mb-8">
+        {% endif %}
+        
+        <h1 class="text-3xl font-bold mb-4">{{ project.title }}</h1>
+        
+        <div class="flex flex-wrap gap-2 mb-6">
+            {% for tech in project.technologies.split(',') %}
+            <span class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full">
+                {{ tech.strip() }}
+            </span>
+            {% endfor %}
+        </div>
+        
+        <div class="prose dark:prose-invert max-w-none mb-8">
+            {{ project.description|safe }}
+        </div>
+        
+        {% if project.project_link %}
+        <a href="{{ project.project_link }}" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="inline-block bg-indigo-600 text-white px-6 py-3 rounded hover:bg-indigo-700">
+            Visit Project
+        </a>
+        {% endif %}
+        
+        {% if current_user.is_authenticated %}
+        <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+            <a href="{{ url_for('projects.edit_project', project_id=project.id) }}" 
+               class="text-indigo-600 dark:text-indigo-400 hover:underline mr-4">
+                Edit Project
+            </a>
+            <a href="{{ url_for('projects.list_projects') }}" 
+               class="text-gray-600 dark:text-gray-400 hover:underline">
+                Back to Projects
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

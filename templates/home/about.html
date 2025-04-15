@@ -1,0 +1,74 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}About Me{% endblock %}
+
+{% block content %}
+<section class="py-20 bg-white dark:bg-gray-900">
+  <div class="container mx-auto px-6">
+    <h1 class="text-4xl font-bold text-center text-gray-800 dark:text-white mb-12">About Me</h1>
+    
+    <div class="flex flex-col md:flex-row items-center gap-12 mb-16">
+      <div class="md:w-1/2">
+        <img src="{{ url_for('static', filename='images/profile.jpg') }}" 
+             alt="Profile Photo"
+             class="rounded-lg shadow-xl w-full h-auto max-w-md mx-auto">
+      </div>
+      
+      <div class="md:w-1/2">
+        <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Who I Am</h2>
+        <p class="text-gray-600 dark:text-gray-300 mb-6">
+          I'm a passionate full-stack developer with [X] years of experience building web applications. 
+          I specialize in Python, JavaScript, and modern web frameworks.
+        </p>
+        
+        <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">My Skills</h2>
+        <div class="flex flex-wrap gap-3 mb-8">
+          <span class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full">Python</span>
+          <span class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full">Flask</span>
+          <span class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full">JavaScript</span>
+          <span class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full">HTML/CSS</span>
+          <span class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full">SQL</span>
+          <span class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full">Git</span>
+        </div>
+        
+        <a href="{{ url_for('projects.list_projects') }}" 
+           class="inline-block px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
+          View My Projects
+        </a>
+      </div>
+    </div>
+    
+    <div class="mb-16">
+      <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-6">Experience</h2>
+      <div class="space-y-8">
+        <div class="border-l-4 border-indigo-500 pl-6 py-2">
+          <h3 class="text-xl font-medium text-gray-800 dark:text-white">Senior Developer</h3>
+          <p class="text-gray-600 dark:text-gray-400">Tech Solutions Inc. • 2020 - Present</p>
+          <p class="text-gray-600 dark:text-gray-300 mt-2">
+            Lead a team of developers to build scalable web applications for clients across various industries.
+          </p>
+        </div>
+        
+        <div class="border-l-4 border-indigo-500 pl-6 py-2">
+          <h3 class="text-xl font-medium text-gray-800 dark:text-white">Web Developer</h3>
+          <p class="text-gray-600 dark:text-gray-400">Digital Agency • 2018 - 2020</p>
+          <p class="text-gray-600 dark:text-gray-300 mt-2">
+            Developed and maintained client websites, focusing on performance and accessibility.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <div>
+      <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-6">Education</h2>
+      <div class="border-l-4 border-indigo-500 pl-6 py-2">
+        <h3 class="text-xl font-medium text-gray-800 dark:text-white">B.S. Computer Science</h3>
+        <p class="text-gray-600 dark:text-gray-400">State University • 2014 - 2018</p>
+        <p class="text-gray-600 dark:text-gray-300 mt-2">
+          Graduated with honors. Focused on software engineering and web development.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
