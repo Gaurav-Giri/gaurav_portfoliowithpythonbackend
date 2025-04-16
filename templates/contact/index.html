@@ -11,7 +11,7 @@
         
         <div>
             {{ form.name.label(class="block text-gray-700 dark:text-gray-300 mb-2") }}
-            {{ form.name(class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500") }}
+            {{ form.name(class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 text-black") }}
             {% for error in form.name.errors %}
             <p class="text-red-500 text-sm mt-1">{{ error }}</p>
             {% endfor %}
@@ -19,7 +19,7 @@
         
         <div>
             {{ form.email.label(class="block text-gray-700 dark:text-gray-300 mb-2") }}
-            {{ form.email(class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500") }}
+            {{ form.email(class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 text-black") }}
             {% for error in form.email.errors %}
             <p class="text-red-500 text-sm mt-1">{{ error }}</p>
             {% endfor %}
@@ -27,7 +27,7 @@
         
         <div>
             {{ form.message.label(class="block text-gray-700 dark:text-gray-300 mb-2") }}
-            {{ form.message(class="w-full px-4 py-2 border rounded-lg h-32 focus:ring-2 focus:ring-indigo-500") }}
+            {{ form.message(class="w-full px-4 py-2 border rounded-lg h-32 focus:ring-2 focus:ring-indigo-500 text-black") }}
             {% for error in form.message.errors %}
             <p class="text-red-500 text-sm mt-1">{{ error }}</p>
             {% endfor %}
