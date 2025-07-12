@@ -16,10 +16,10 @@ def initialize_database():
             db.session.add(admin)
             
             project = Project(
-                title="Sample Project",
-                description="This is a sample project",
+                title="FullStack Portfolio Website",
+                description="full stack website with flask backend and database, admin login, password hashing .",
                 technologies="Python, Flask",
-                project_link="https://example.com"
+                project_link="https://github.com/Gaurav-Giri/gaurav_portfoliowithpythonbackend"
             )
             db.session.add(project)
             
